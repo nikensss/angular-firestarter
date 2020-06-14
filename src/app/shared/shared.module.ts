@@ -19,20 +19,18 @@ const components = [ShellComponent];
 
 const modules = [
   CommonModule,
-  MatButtonModule,
+  RouterModule,
   MatToolbarModule,
   MatIconModule,
   LayoutModule,
+  MatButtonModule,
   MatSidenavModule,
   MatListModule,
   MatMenuModule,
-  MatIconModule,
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
-  RouterModule,
-  ShellComponent,
 ];
 
 @NgModule({

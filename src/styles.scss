@@ -57,7 +57,7 @@ $angular-firestarter-accent: mat-palette($mat-pink, A200, A100, A400);
 $angular-firestarter-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$angular-firestarter-theme: mat-light-theme(
+$angular-firestarter-theme: mat-dark-theme(
   $angular-firestarter-primary,
   $angular-firestarter-accent,
   $angular-firestarter-warn

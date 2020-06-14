@@ -1,1 +1,78 @@
-<p>shell works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <!-- 3. Sidenav bar, only shown in smaller devices thanks to [mode]
+    - sidenav class for further customization in our CSS
+    - fixedInViewport directive to make sure it is fixed in the viewport
+    - attr.role is purely for accessibility purposes
+    - mode: change the actual property depending on the isHandset$ observable
+    -#drawer: creates a variable called drawer that references the <mat-sidenav></mat-sidenav> tag
+    As a reminder: '[]' notation means that that attribute is bound to the value
+    of the assigned variable. A change in the variable will be reflected in that
+    attribute.
+  -->
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="drawer.close()" routerLink="/">Home</a>
+      <a mat-list-item (click)="drawer.close()" routerLink="/login">Login</a>
+      <a mat-list-item (click)="drawer.close()" routerLink="/kanban">Kanban Demo</a>
+      <a mat-list-item (click)="drawer.close()" routerLink="/customers">SSR Demo</a>
+    </mat-nav-list>
+
+
+  </mat-sidenav>
+
+  <!-- 1. This will hold all the content for the navigation -->
+  <mat-sidenav-content>
+    <!-- 4. Create top toolbar -->
+    <mat-toolbar>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
+        <!-- 5. mat-icon takes text as a reference to a material icon name -->
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="logo" routerLink="/">🔥Angular Firestarter</span>
+      <span class="fill-space"></span>
+      <div *ngIf="!(isHandset$ | async)">
+        <a mat-button routerLink="/kanban">🍱 Kanban Demo</a>
+        <a mat-button routerLink="/customers">⚡ SSR Demo</a>
+        <a mat-button routerLink="/login">🔑 Login</a>
+      </div>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <!-- For more info on why '#menu="matMenu"' go to
+      https://angular.io/guide/template-syntax#template-reference-variables-var
+     -->
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item href="https://fireship.page.link/slack">
+          <i>💬</i>
+          <span>Chat on Slack</span>
+        </a>
+        <a mat-menu-item href="https://github.com/codediodeio/angular-firestarter">
+          <i>💾</i>
+          <span>Code on Github</span>
+        </a>
+        <a mat-menu-item href="https://fireship.io/courses/angular">
+          <i>🔥</i>
+          <span>Full Course on Fireship</span>
+        </a>
+
+        <a mat-menu-item href="https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA">
+          <i>📺</i>
+          <span>Watch on the YouTube</span>
+        </a>
+      </mat-menu>
+    </mat-toolbar>
+    <!-- 2. Content here is realtively static, but it does change when navigating
+    to a specific route.
+    In order to pass content to this component we use TRANSCLUSION.
+    The <ng-content></ng-content> element will hold all the content inside the
+    <app-shell></app-shell> tag.-->
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

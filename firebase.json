@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "angular-firestarter",
+      "public": "dist/angular-firestarter",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

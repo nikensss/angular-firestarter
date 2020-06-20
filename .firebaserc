@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "firestarter-nikensss": {
+      "hosting": {
+        "angular-firestarter": [
+          "firestarter-nikensss"
+        ]
+      }
+    }
+  }
+}

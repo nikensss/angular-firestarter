@@ -3,10 +3,15 @@
   <!-- use the async pipe to unwrap the authState Observable -->
   <div *ngIf="!(afAuth.authState | async)">
     <h1>Login</h1>
+
     <button mat-raised-button appGoogleSignin>
       <img src="/assets/google-logo.svg" alt="">
       Login in with Google
     </button>
+
+    <h5>OR</h5>
+
+    <app-email-login></app-email-login>
   </div>
   <!-- again, use the async pipe to unwrap the authState Observable -->
   <!-- and create a template variable called user with the unwrapped Observable -->

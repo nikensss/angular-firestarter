@@ -84,6 +84,7 @@
     don't match or if we are in the loading state -->
     <button
       mat-raised-button
+      *ngIf="!isPasswordReset"
       color="accent"
       type="submit"
       [disabled]="form.invalid || !passwordDoesMatch || loading"

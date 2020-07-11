@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Board, Task } from './board.model';
 import * as firebase from 'firebase/app';
 import { switchMap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,7 @@ export class BoardService {
   /**
    * Get all the boards for the current user
    */
-  getUserBoards() {
+  getUserBoards(): Observable<any> {
     return this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
@@ -72,6 +73,7 @@ export class BoardService {
   sortBoards(boards: Board[]) {
     const db = firebase.firestore();
     const batch = db.batch();
+    //map the frontend board to the backend board
     const refs = boards.map((b) => db.collection('boards').doc(b.id));
     refs.forEach((ref, idx) => batch.update(ref, { priority: idx }));
     batch.commit();

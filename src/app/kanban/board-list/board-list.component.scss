@@ -30,6 +30,11 @@
   }
 }
 
+.board {
+  border: 5px dashed transparent;
+  margin: 0 10px;
+}
+
 .cdk-drag-placeholder {
   opacity: 0.2;
   width: 350px;

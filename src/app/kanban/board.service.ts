@@ -29,7 +29,7 @@ export class BoardService {
    * Delete board
    */
   deleteBoard(boardId: string) {
-    return this.getBoard('boards').delete();
+    return this.getBoard(boardId).delete();
   }
 
   /**
